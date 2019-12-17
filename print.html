@@ -1,0 +1,263 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Invoice</title>
+
+    <style>
+        .bd td{
+             margin: 0 !important;
+            padding: 0 !important;
+        }
+        .invoice-box {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            font-size: 12px;
+            line-height: 24px;
+            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        }
+
+        .invoice-box table {
+            width: 100%;
+            line-height: inherit;
+            text-align: left;
+        }
+
+        .invoice-box table td {
+            padding: 5px;
+            vertical-align: top;
+        }
+
+        .invoice-box table caption {
+            font-size: 16px;
+        }
+
+        .invoice-box table tr td:nth-child(2) {
+            /*text-align: right;*/
+        }
+
+        .invoice-box table tr.top table td {
+            padding-bottom: 20px;
+        }
+
+        .invoice-box table tr.top table td.title {
+            font-size: 45px;
+            line-height: 45px;
+            color: #333;
+        }
+
+        .invoice-box table tr.information table td {
+            padding-bottom: 40px;
+        }
+
+        .invoice-box table tr.heading td {
+            background: #d7f0f5;
+            border-bottom: 1px solid #ddd;
+            font-weight: bold;
+        }
+
+         .invoice-box table tr.legend td {
+            background: #f4f5dc;
+            border-bottom: 1px solid #ddd;
+            font-weight: bold;
+        }
+
+        .invoice-box table tr.details td {
+            padding-bottom: 20px;
+        }
+
+        .invoice-box table tr.item td {
+            border-bottom: 1px solid #eee;
+        }
+
+        .invoice-box table tr.item.last td {
+            border-bottom: none;
+        }
+
+        .invoice-box table tr.total td:nth-child(2) {
+            border-top: 2px solid #eee;
+            font-weight: bold;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .invoice-box table tr.top table td {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+
+            .invoice-box table tr.information table td {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+        }
+        /** RTL **/
+
+        .rtl {
+            direction: rtl;
+            font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        }
+
+        .rtl table {
+            text-align: right;
+        }
+
+        .rtl table tr td:nth-child(2) {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+            <caption><b>Invoice</b></caption>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><b>To</b></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td><b>MK Law Chambers</b></td>
+                <td></td>
+                <td><b>Sridhar Advocate</b></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+
+            <tr>
+                <td> No.75, "SRI Keshava", 1st Floor,<br> CHBCS Layout,5th Main road, Govindaraja Nagar<br> Bengaluru (Bangalore)
+                    Urban,Karnataka-560040</td>
+                <td></td>
+                <td>New No. 14, Old No. 82, Ranjit Towers,<br> Flat No.5, Ist Avenue,Indira Nagar<br> Adyar, Chennai, Tamil Nadu-600020</td>
+                <td></td>
+                <td></td>
+            </tr>
+
+
+            <tr>
+                <td colspan="3">
+                    Invoice #: 123<br> Created: June 1, 2019
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="heading">
+                <td colspan="4">Description</td>
+                <td>Amount</td>
+            </tr>
+            <tr class="legend">
+                <td colspan="4">
+                    Professional Charges in connection with the following services rendered:-
+                </td>
+
+                <td>
+                   <span style='font-size:14px;'>&#8377;</span>
+                </td>
+            </tr>
+            <tr class="item">
+              <td colspan="4">
+                    Faciliation of obtaining Certificate Lesser Tax Deduction at Source
+                </td>
+
+                <td>
+                    50000.00
+                </td>
+            </tr>
+
+            <tr class="item">
+                <td colspan="4">
+                    Expenses and Other incedentals
+                </td>
+
+                <td>
+                    20,000.00
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><b>Total</b></td>
+                <td>70,000.00</td>
+
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    Amount in Words<br>
+                    <b>Rupees Seventy Thousand Only</b>
+                </td>
+           
+
+            </tr>
+            <tr>
+                <td>PAN</td>
+                <td>AAAAA1111A</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><b>Bank Details</b></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="bd">
+                <td>Beneficiary Name</td>
+                <td>Kaushik M</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="bd">
+                <td>Bank Name</td>
+                <td>Indian Overseas Bank</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="bd">
+                <td>Branch</td>
+                <td>Vijayanagar</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="bd">
+                <td>Account No.</td>
+                <td>2633020000001234</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="bd">
+                <td>Nature of Account</td>
+                <td>Current</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="bd">
+                <td>IFSC Code</td>
+                <td>IOBA0002633</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+
+    </div>
+</body>
+
+</html>
