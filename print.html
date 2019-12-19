@@ -6,10 +6,11 @@
     <title>Invoice</title>
 
     <style>
-        .bd td{
-             margin: 0 !important;
+        .bd td {
+            margin: 0 !important;
             padding: 0 !important;
         }
+
         .invoice-box {
             max-width: 800px;
             margin: auto;
@@ -19,76 +20,79 @@
             font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
         }
 
-        .invoice-box table {
+        .invoice-box table.parent {
             width: 100%;
             line-height: inherit;
             text-align: left;
         }
 
-        .invoice-box table td {
+        
+       
+
+        .invoice-box table.parent td {
             padding: 5px;
             vertical-align: top;
         }
 
-        .invoice-box table caption {
+        .invoice-box table.parent caption {
             font-size: 16px;
         }
 
-        .invoice-box table tr td:nth-child(2) {
+        .invoice-box table.parent tr td:nth-child(2) {
             /*text-align: right;*/
         }
 
-        .invoice-box table tr.top table td {
+        .invoice-box table.parent tr.top table td {
             padding-bottom: 20px;
         }
 
-        .invoice-box table tr.top table td.title {
+        .invoice-box table.parent tr.top table td.title {
             font-size: 45px;
             line-height: 45px;
             color: #333;
         }
 
-        .invoice-box table tr.information table td {
+        .invoice-box table.parent tr.information table td {
             padding-bottom: 40px;
         }
 
-        .invoice-box table tr.heading td {
+        .invoice-box table.parent tr.heading td {
             background: #d7f0f5;
             border-bottom: 1px solid #ddd;
             font-weight: bold;
         }
 
-         .invoice-box table tr.legend td {
+        .invoice-box table.parent tr.legend td {
             background: #f4f5dc;
             border-bottom: 1px solid #ddd;
             font-weight: bold;
         }
 
-        .invoice-box table tr.details td {
+        .invoice-box table.parent tr.details td {
             padding-bottom: 20px;
         }
 
-        .invoice-box table tr.item td {
+        .invoice-box table.parent tr.item td {
             border-bottom: 1px solid #eee;
         }
 
-        .invoice-box table tr.item.last td {
+        .invoice-box table.parent tr.item.last td {
             border-bottom: none;
         }
 
-        .invoice-box table tr.total td:nth-child(2) {
+        .invoice-box table.parent tr.total td:nth-child(2) {
             border-top: 2px solid #eee;
             font-weight: bold;
         }
 
         @media only screen and (max-width: 600px) {
-            .invoice-box table tr.top table td {
+            .invoice-box table.parent tr.top table td {
                 width: 100%;
                 display: block;
                 text-align: center;
             }
 
-            .invoice-box table tr.information table td {
+            .invoice-box table.parent tr.information table td {
                 width: 100%;
                 display: block;
                 text-align: center;
@@ -113,7 +117,7 @@
 
 <body>
     <div class="invoice-box">
-        <table cellpadding="0" cellspacing="0">
+        <table cellpadding="0" cellspacing="0" class="parent">
             <caption><b>Invoice</b></caption>
             <tr>
                 <td></td>
@@ -134,7 +138,8 @@
 
             <tr>
                 <td> No.75, "SRI Keshava", 1st Floor,<br> CHBCS Layout,5th Main road, Govindaraja Nagar<br> Bengaluru (Bangalore)
-                    Urban,Karnataka-560040</td>
+                    Urban,Karnataka-560040
+                </td>
                 <td></td>
                 <td>New No. 14, Old No. 82, Ranjit Towers,<br> Flat No.5, Ist Avenue,Indira Nagar<br> Adyar, Chennai, Tamil Nadu-600020</td>
                 <td></td>
@@ -159,16 +164,16 @@
                 </td>
 
                 <td>
-                   <span style='font-size:14px;'>&#8377;</span>
+                    <span style='font-size:14px;'>&#8377;</span>
                 </td>
             </tr>
             <tr class="item">
-              <td colspan="4">
+                <td colspan="4">
                     Faciliation of obtaining Certificate Lesser Tax Deduction at Source
                 </td>
 
                 <td>
-                    50000.00
+                    50,000.00
                 </td>
             </tr>
 
@@ -186,33 +191,38 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><b>Total</b></td>
+                <td><b>Gross Total</b>:</td>
                 <td>70,000.00</td>
 
             </tr>
 
             <tr>
-                <td colspan="5">
-                    Amount in Words<br>
-                    <b>Rupees Seventy Thousand Only</b>
+                <td colspan="3" align="right">
+                    <table valign="top" border="1">
+                        <tr>
+                            <td>CGST@5%:</td>
+                            <td>3500.00</td>
+                            <td>SGST@5%:</td>
+                            <td>3500.00</td>
+                        </tr>
+                    </table>
                 </td>
-           
+                <td><b>Net Total</b>:</td>
+                <td>77,000.00</td>
+              
 
             </tr>
             <tr>
+                 <td colspan="5" align="right">Amount in Words :<b>Rupees Seventy Seven Thousand Only</b></td>
+                
+            </tr>
+            <tr>
+                <td><b>Bank Details</b></td>
                 <td>PAN</td>
                 <td>AAAAA1111A</td>
                 <td></td>
                 <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td><b>Bank Details</b></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+             </tr>
             <tr class="bd">
                 <td>Beneficiary Name</td>
                 <td>Kaushik M</td>
