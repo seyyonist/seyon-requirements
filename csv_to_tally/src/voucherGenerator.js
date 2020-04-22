@@ -46,7 +46,7 @@ function OBJtoXML(obj, rootTag) {
         xml += obj[prop];
         xml += "</" + prop + ">";
     }
-    var xml = xml.replace(/<\/?[0-9]{1,}>/g, '');
+    xml = xml.replace(/<\/?[0-9]{1,}>/g, '');
     xml = xml + "</" + rootTag + ">"
     return xml
 }
@@ -57,6 +57,6 @@ function OBJtoXMLnoRoot(obj) {
         xml += obj[prop];
         xml += "</" + prop + ">";
     }
-    var xml = xml.replace(/<\/?[0-9]{1,}>/g, '');
+    xml = xml.replace(/<\/?[0-9]{1,}>/g, '');
     return xml
 }

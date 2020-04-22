@@ -71,7 +71,7 @@ class App extends Component{
       xml += obj[prop];
       xml += "</" + prop + ">";
     }
-    var xml = xml.replace(/<\/?[0-9]{1,}>/g, '');
+    xml = xml.replace(/<\/?[0-9]{1,}>/g, '');
     xml=xml+"</"+rootTag+">"
     return xml
   }
