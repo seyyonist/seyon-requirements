@@ -8,7 +8,7 @@ export function generateVoucherXml(csvRow, companyId = 123234) {
         amt:infor[5],
         narration:infor[6]
      */
-   
+
     let uuid = uuidv4();
     let cdtrData = {
         REMOVEZEROENTRIES: "No",
@@ -59,4 +59,27 @@ function OBJtoXMLnoRoot(obj) {
     }
     xml = xml.replace(/<\/?[0-9]{1,}>/g, '');
     return xml
+}
+
+export function StringToXML(oString) {
+    //code for IE
+    if (window.ActiveXObject) {
+        var oXML = new window.ActiveXObject("Microsoft.XMLDOM"); oXML.loadXML(oString);
+        return oXML;
+    }
+    // code for Chrome, Safari, Firefox, Opera, etc. 
+    else {
+        return (new DOMParser()).parseFromString(oString, "text/xml");
+    }
+}
+
+export function XMLToString(oXML) {
+    //code for IE
+    if (window.ActiveXObject) {
+        var oString = oXML.xml; return oString;
+    }
+    // code for Chrome, Safari, Firefox, Opera, etc.
+    else {
+        return (new XMLSerializer()).serializeToString(oXML);
+    }
 }
