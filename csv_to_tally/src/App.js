@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import { generateVoucherXml } from './voucherGenerator';
-import  * as format from 'xml-formatter';
 
 const Results = (props) => (
-  <div id="results" className="results" style={{display:props.show?"block":"none"}}>
+  <div id="results" className="results" style={{ display: props.show ? "block" : "none" }}>
     <div className="header">
-      <button onClick={()=>props.toggle()} className="btn btn-sm btn-danger">close</button>
+      <button onClick={() => props.toggle()} className="btn btn-sm btn-danger">close</button>
     </div>
     <div className="body">{props.value}</div>
   </div>
@@ -18,7 +17,7 @@ class App extends Component {
     xml: "",
     dataList: [],
     selectedFile: "",
-    showResult:false
+    showResult: false
   }
   openFile() {
     this.refs.fileSelector.click()
@@ -47,11 +46,13 @@ class App extends Component {
           let csvData = {
             date: infor[0],
             vtype: infor[1],
-            refNo: infor[2],
+            refNo: i,
             drLed: infor[3],
             crLed: infor[4],
-            amt: infor[5],
-            narration: infor[6]
+            drAmt: infor[5],
+            crAmt: infor[6],
+            amt: infor[5] + infor[6],
+            narration: infor[7]
           }
           data.push(csvData);
         }
@@ -72,8 +73,8 @@ class App extends Component {
       entries += y
     })
     entries += "</REQUESTDATA></IMPORTDATA></BODY></ENVELOPE>"
-    let xml=format(entries)
-    this.setState({ xml: entries,showResult:true })
+
+    this.setState({ xml: entries, showResult: true })
   }
 
   OBJtoXML(obj, rootTag) {
@@ -87,21 +88,116 @@ class App extends Component {
     xml = xml + "</" + rootTag + ">"
     return xml
   }
-  toggleResult(){
-    let current=this.state.showResult
+  toggleResult() {
+    let current = this.state.showResult
     this.setState({
-      showResult:!current
+      showResult: !current
     })
   }
+  handelDrRowChange(e, index) {
+    let rowValue = e.target.value
+    let newDataList = this.state.dataList
+    newDataList[index]['drLed'] = rowValue;
+    this.setState({ dataList: newDataList });
+  }
+  handelCrRowChange(e, index) {
+    let rowValue = e.target.value
+    let newDataList = this.state.dataList
+    newDataList[index]['crLed'] = rowValue;
+    this.setState({ dataList: newDataList });
+  }
+  handelvTypeRowChange(e, index) {
+    let rowValue = e.target.value
+    let newDataList = this.state.dataList
+    newDataList[index]['vtype'] = rowValue;
+    this.setState({ dataList: newDataList });
+  }
   render() {
+
     let tdata = this.state.dataList.map((data, index) => {
       return (
         <tr key={index}>
           <td>{data.date}</td>
-          <td>{data.vtype}</td>
+          <td>
+            <select key={index} value={data.vtype} onChange={(e) => this.handelvTypeRowChange(e, index)}>
+              <option value=''></option>
+              <option value='Contra'>Contra</option>
+              <option value='Credit Note'>Credit Note</option>
+              <option value='Debit Note'>Debit Note</option>
+              <option value='Delivery Note'>Delivery Note</option>
+              <option value='Job Work In Order'>Job Work In Order</option>
+              <option value='Job Work Out Order'>Job Work Out Order</option>
+              <option value='Journal'>Journal</option>
+              <option value='Material In'>Material In</option>
+              <option value='Material Out'>Material Out</option>
+              <option value='Memorandum'>Memorandum</option>
+              <option value='Payment'>Payment</option>
+              <option value='Physical Stock'>Physical Stock</option>
+              <option value='Purchase'>Purchase</option>
+              <option value='Purchase Order'>Purchase Order</option>
+              <option value='Receipt'>Receipt</option>
+              <option value='Receipt Note'>Receipt Note</option>
+              <option value='Rejections In'>Rejections In</option>
+              <option value='Rejections Out'>Rejections Out</option>
+              <option value='Reversing Journal'>Reversing Journal</option>
+              <option value='Sales'>Sales</option>
+              <option value='Sales Order'>Sales Order</option>
+              <option value='StockJournal'>StockJournal</option>
+            </select>
+          </td>
           <td>{data.refNo}</td>
-          <td>{data.drLed}</td>
-          <td>{data.crLed}</td>
+          <td>
+            <select key={index} value={data.drLed} onChange={(e) => this.handelDrRowChange(e, index)}>
+              <option value=''></option>
+              <option value='HDFC - FD'>HDFC - FD</option>
+              <option value='Syndicate Bank - FD'>Syndicate Bank - FD</option>
+              <option value='HDFC Diners Premium Cr Card'>HDFC Diners Premium Cr Card</option>
+              <option value='SBI IRCTC Cr Card'>SBI IRCTC Cr Card</option>
+              <option value='HDFC Diners Black Cr Card'>HDFC Diners Black Cr Card</option>
+              <option value='Professional Fees Received'>Professional Fees Received</option>
+              <option value='Professional Fees Paid'>Professional Fees Paid</option>
+              <option value='Travel Expenses'>Travel Expenses</option>
+              <option value='Staff Welfare'>Staff Welfare</option>
+              <option value='Conveyance Expenses'>Conveyance Expenses</option>
+              <option value='Communication Expenses'>Communication Expenses</option>
+              <option value='Vehicle Maintenance'>Vehicle Maintenance</option>
+              <option value='Life Insurance Premium'>Life Insurance Premium</option>
+              <option value='Interest Received - SB'>Interest Received - SB</option>
+              <option value='Interest Received - FD'>Interest Received - FD</option>
+              <option value='Public Provident Fund'>Public Provident Fund</option>
+              <option value='Drawings'>Drawings</option>
+              <option value='TDS Deducted FY 2019 -20'>TDS Deducted FY 2019 -20</option>
+              <option value='Mediclaim Insurance'>Mediclaim Insurance</option>
+              <option value='Suspense'>Suspense</option>
+
+            </select>
+          </td>
+          <td>
+            <select key={index} value={data.crLed} onChange={(e) => this.handelCrRowChange(e, index)}>
+              <option value=''></option>
+              <option value='HDFC - FD'>HDFC - FD</option>
+              <option value='Syndicate Bank - FD'>Syndicate Bank - FD</option>
+              <option value='HDFC Diners Premium Cr Card'>HDFC Diners Premium Cr Card</option>
+              <option value='SBI IRCTC Cr Card'>SBI IRCTC Cr Card</option>
+              <option value='HDFC Diners Black Cr Card'>HDFC Diners Black Cr Card</option>
+              <option value='Professional Fees Received'>Professional Fees Received</option>
+              <option value='Professional Fees Paid'>Professional Fees Paid</option>
+              <option value='Travel Expenses'>Travel Expenses</option>
+              <option value='Staff Welfare'>Staff Welfare</option>
+              <option value='Conveyance Expenses'>Conveyance Expenses</option>
+              <option value='Communication Expenses'>Communication Expenses</option>
+              <option value='Vehicle Maintenance'>Vehicle Maintenance</option>
+              <option value='Life Insurance Premium'>Life Insurance Premium</option>
+              <option value='Interest Received - SB'>Interest Received - SB</option>
+              <option value='Interest Received - FD'>Interest Received - FD</option>
+              <option value='Public Provident Fund'>Public Provident Fund</option>
+              <option value='Drawings'>Drawings</option>
+              <option value='TDS Deducted FY 2019 -20'>TDS Deducted FY 2019 -20</option>
+              <option value='Mediclaim Insurance'>Mediclaim Insurance</option>
+              <option value='Suspense'>Suspense</option>
+            </select></td>
+          <td>{data.drAmt}</td>
+          <td>{data.crAmt}</td>
           <td>{data.amt}</td>
           <td>{data.narration}</td>
         </tr>
@@ -111,7 +207,7 @@ class App extends Component {
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand" href="#">Voucher to tally XML </a>
+          <a className="navbar-brand" href>Voucher to tally XML </a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -125,7 +221,7 @@ class App extends Component {
           <input type="file" id="chooseFile" ref="fileSelector"
             onChange={this.readInputFile.bind(this)} onClick={(event) => { event.target.value = null }} style={{ display: "none" }} />
           <div className="bg-info pl-2 pr-2 pb-1 pt-1 text-dark">
-            Selected file : 
+            Selected file :
             <button onClick={() => this.openFile()} type="button" className="btn btn-sm btn-primary">Open File</button> : {this.state.selectedFile}
             &nbsp;<button onClick={() => this.processCSV()} type="button" className="btn btn-sm btn-success">Process CSV</button>
             <button type="button" className="btn btn-sm btn-warning float-right" onClick={() => this.generateXML()}>Generate XML</button>
@@ -138,6 +234,8 @@ class App extends Component {
                 <th>Ref Number</th>
                 <th>Dr Ledger</th>
                 <th>Cr Ledger</th>
+                <th>Dr Amount</th>
+                <th>Cr Amounr</th>
                 <th>Amount</th>
                 <th>narration</th>
               </tr>
@@ -147,7 +245,7 @@ class App extends Component {
             </tbody>
           </table>
           <hr />
-          <Results value={this.state.xml} show={this.state.showResult} toggle={()=>this.toggleResult()}/>
+          <Results value={this.state.xml} show={this.state.showResult} toggle={() => this.toggleResult()} />
         </div>
       </div>
     )
