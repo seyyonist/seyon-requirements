@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import { generateVoucherXml } from './voucherGenerator';
 
+import * as filesaver from "file-saver";
+
 const Results = (props) => (
   <div id="results" className="results" style={{ display: props.show ? "block" : "none" }}>
     <div className="header">
@@ -74,7 +76,10 @@ class App extends Component {
     })
     entries += "</REQUESTDATA></IMPORTDATA></BODY></ENVELOPE>"
 
-    this.setState({ xml: entries, showResult: true })
+    this.setState({ xml: entries })
+    let data = new Blob([entries], { type: "application/xml;charset=utf-8"});
+    filesaver.saveAs(data, 'VoucherExport_' + new Date().getTime() + ".xml");
+
   }
 
   OBJtoXML(obj, rootTag) {
