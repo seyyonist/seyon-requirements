@@ -124,83 +124,15 @@ class App extends Component {
         <tr key={index}>
           <td>{data.date}</td>
           <td>
-            <select key={index} value={data.vtype} onChange={(e) => this.handelvTypeRowChange(e, index)}>
-              <option value=''></option>
-              <option value='Contra'>Contra</option>
-              <option value='Credit Note'>Credit Note</option>
-              <option value='Debit Note'>Debit Note</option>
-              <option value='Delivery Note'>Delivery Note</option>
-              <option value='Job Work In Order'>Job Work In Order</option>
-              <option value='Job Work Out Order'>Job Work Out Order</option>
-              <option value='Journal'>Journal</option>
-              <option value='Material In'>Material In</option>
-              <option value='Material Out'>Material Out</option>
-              <option value='Memorandum'>Memorandum</option>
-              <option value='Payment'>Payment</option>
-              <option value='Physical Stock'>Physical Stock</option>
-              <option value='Purchase'>Purchase</option>
-              <option value='Purchase Order'>Purchase Order</option>
-              <option value='Receipt'>Receipt</option>
-              <option value='Receipt Note'>Receipt Note</option>
-              <option value='Rejections In'>Rejections In</option>
-              <option value='Rejections Out'>Rejections Out</option>
-              <option value='Reversing Journal'>Reversing Journal</option>
-              <option value='Sales'>Sales</option>
-              <option value='Sales Order'>Sales Order</option>
-              <option value='StockJournal'>StockJournal</option>
-            </select>
+            <input type="text" key={index} value={data.vtype} onChange={(e) => this.handelvTypeRowChange(e, index)}/>
           </td>
           <td>{data.refNo}</td>
           <td>
-            <select key={index} value={data.drLed} onChange={(e) => this.handelDrRowChange(e, index)}>
-              <option value=''></option>
-              <option value='HDFC - FD'>HDFC - FD</option>
-              <option value='Syndicate Bank - FD'>Syndicate Bank - FD</option>
-              <option value='HDFC Diners Premium Cr Card'>HDFC Diners Premium Cr Card</option>
-              <option value='SBI IRCTC Cr Card'>SBI IRCTC Cr Card</option>
-              <option value='HDFC Diners Black Cr Card'>HDFC Diners Black Cr Card</option>
-              <option value='Professional Fees Received'>Professional Fees Received</option>
-              <option value='Professional Fees Paid'>Professional Fees Paid</option>
-              <option value='Travel Expenses'>Travel Expenses</option>
-              <option value='Staff Welfare'>Staff Welfare</option>
-              <option value='Conveyance Expenses'>Conveyance Expenses</option>
-              <option value='Communication Expenses'>Communication Expenses</option>
-              <option value='Vehicle Maintenance'>Vehicle Maintenance</option>
-              <option value='Life Insurance Premium'>Life Insurance Premium</option>
-              <option value='Interest Received - SB'>Interest Received - SB</option>
-              <option value='Interest Received - FD'>Interest Received - FD</option>
-              <option value='Public Provident Fund'>Public Provident Fund</option>
-              <option value='Drawings'>Drawings</option>
-              <option value='TDS Deducted FY 2019 -20'>TDS Deducted FY 2019 -20</option>
-              <option value='Mediclaim Insurance'>Mediclaim Insurance</option>
-              <option value='Suspense'>Suspense</option>
-
-            </select>
+            <input type="text" key={index} value={data.drLed} onChange={(e) => this.handelDrRowChange(e, index)}/>
           </td>
           <td>
-            <select key={index} value={data.crLed} onChange={(e) => this.handelCrRowChange(e, index)}>
-              <option value=''></option>
-              <option value='HDFC - FD'>HDFC - FD</option>
-              <option value='Syndicate Bank - FD'>Syndicate Bank - FD</option>
-              <option value='HDFC Diners Premium Cr Card'>HDFC Diners Premium Cr Card</option>
-              <option value='SBI IRCTC Cr Card'>SBI IRCTC Cr Card</option>
-              <option value='HDFC Diners Black Cr Card'>HDFC Diners Black Cr Card</option>
-              <option value='Professional Fees Received'>Professional Fees Received</option>
-              <option value='Professional Fees Paid'>Professional Fees Paid</option>
-              <option value='Travel Expenses'>Travel Expenses</option>
-              <option value='Staff Welfare'>Staff Welfare</option>
-              <option value='Conveyance Expenses'>Conveyance Expenses</option>
-              <option value='Communication Expenses'>Communication Expenses</option>
-              <option value='Vehicle Maintenance'>Vehicle Maintenance</option>
-              <option value='Life Insurance Premium'>Life Insurance Premium</option>
-              <option value='Interest Received - SB'>Interest Received - SB</option>
-              <option value='Interest Received - FD'>Interest Received - FD</option>
-              <option value='Public Provident Fund'>Public Provident Fund</option>
-              <option value='Drawings'>Drawings</option>
-              <option value='TDS Deducted FY 2019 -20'>TDS Deducted FY 2019 -20</option>
-              <option value='Mediclaim Insurance'>Mediclaim Insurance</option>
-              <option value='Suspense'>Suspense</option>
-            </select></td>
+            <input type="text" key={index} value={data.crLed} onChange={(e) => this.handelCrRowChange(e, index)}/>
+          </td>
           <td>{data.drAmt}</td>
           <td>{data.crAmt}</td>
           <td>{data.amt}</td>
